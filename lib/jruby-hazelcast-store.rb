@@ -17,7 +17,7 @@ module ActiveSupport
         
       end
 
-      def read(key, options = nil)
+      def read_entry(key, options = nil)
         super
         @cache.get(key)
         rescue CacheException => e
@@ -25,7 +25,7 @@ module ActiveSupport
         
       end
 
-      def write(key, value, options = nil)
+      def write_entry(key, value, options = nil)
         super
         @data.put(key, value, options)
         true
@@ -34,7 +34,7 @@ module ActiveSupport
         
       end
 
-      def delete(key, options = nil)
+      def delete_entry(key, options = nil)
         super
         @data.evict(key)
         rescue CacheException => e
